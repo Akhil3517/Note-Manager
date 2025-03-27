@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Note</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-zinc-900 text-white flex flex-col items-center py-10">
+    <a class="text-green-300 hover:underline" href="/">Go back</a>
+
+    <div class="w-full max-w-3xl p-6 bg-zinc-800 rounded-lg shadow-md mt-5">
+        <h2 class="text-2xl font-semibold text-gray-200 mb-4">Edit Note</h2>
+        <form action="/update/<%= filename %>" method="post">
+            <input class="w-full bg-zinc-700 text-white px-4 py-2 rounded-lg border border-gray-600 mb-3"
+                type="text" name="title" value="<%= filename.replace('.txt', '') %>">
+
+            <textarea name="desc" class="w-full h-64 bg-zinc-700 text-white px-4 py-2 rounded-lg border border-gray-600"
+                ><%= filedata %></textarea>
+
+            <button class="mt-4 px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600" type="submit">
+                Save Changes
+            </button>
+        </form>
+    </div>
+</body>
+
+</html>

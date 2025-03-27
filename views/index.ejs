@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .glow-effect {
+            transition: box-shadow 0.3s ease-in-out, border 0.3s ease-in-out;
+        }
+
+        .glow-effect:hover {
+            box-shadow: 0px 0px 10px rgba(0, 255, 127, 0.8);
+            border-color: #00ff7f;
+        }
+
+        .glow-effect-blue:hover {
+            box-shadow: 0px 0px 10px rgba(0, 255, 255, 0.8);
+            border-color: #00ffff;
+        }
+    </style>
+</head>
+
+<body class="bg-zinc-900 text-white flex flex-col items-center py-10">
+    <div class="form w-full max-w-lg p-8 bg-zinc-800 rounded-lg shadow-md border border-zinc-700 glow-effect">
+        <h2 class="text-2xl font-semibold text-gray-200 mb-4">Create a note</h2>
+        <form action="/create" method="post" class="space-y-4">
+            <input
+                class="w-full px-4 py-2 bg-zinc-700 rounded-lg border border-zinc-600 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-green-400 transition-all duration-300"
+                type="text" placeholder="Title" name="title">
+            <textarea
+                class="w-full px-4 py-2 bg-zinc-700 rounded-lg resize-none border border-zinc-600 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-green-400 transition-all duration-300"
+                placeholder="Enter description" name="desc"></textarea>
+            <input
+                class="w-full bg-green-500 text-white font-semibold py-2 rounded-lg cursor-pointer border border-transparent hover:border-green-400 glow-effect transition-all duration-300"
+                type="submit" value="Add Note">
+        </form>
+    </div>
+
+    <div class="task w-full max-w-4xl mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <% if(files.length> 0) { %>
+            <% files.forEach(function (val) { %>
+                <div
+                    class="tasks bg-zinc-800 p-5 rounded-lg shadow-lg border border-zinc-700 glow-effect-blue transition-all duration-300">
+                    <h1 class="text-xl font-medium text-gray-300 hover:text-gray-100 transition duration-200">
+                        <%= val %>
+                    </h1>
+                    <div class="m-1 flex justify-between">
+                        <a class="text-cyan-300 mt-2 inline-block hover:text-green-600 hover:underline transition duration-200"
+                            href="/files/<%=val%>"> Read more..</a>
+                        <div class="flex gap-4">
+
+                            <a class="text-cyan-300 mt-2  inline-block hover:text-gray-200 hover:underline transition duration-200"
+                                href="/edit/<%=val%>"> Edit </a>
+                            <a class="text-red-700 mt-2  inline-block hover:text-red-400 hover:underline transition duration-200"
+                                href="/delete/<%=val%>"> Delete </a>
+                        </div>
+                    </div>
+                </div>
+                <% }) %>
+                    <% } else { %>
+                        <h2 class="text-gray-400 text-lg">No Notes </h2>
+                        <% } %>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,21 @@
+{
+  "name": "pract",
+  "version": "1.0.0",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "script.js"
+  },
+  "author": "yo",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "autoprefixer": "^10.4.21",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "postcss": "^8.5.3"
+  },
+  "devDependencies": {
+    "tailwindcss": "^4.0.15"
+  }
+}
